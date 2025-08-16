@@ -1,0 +1,12 @@
+### Signup API test
+POST http://localhost:3000/api/signup
+Content-Type: application/json
+
+{
+  "name": "Karan",
+  "email": "karan112@example.com",
+  "password": "secret123"
+}
+
+
+
