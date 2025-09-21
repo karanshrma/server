@@ -9,7 +9,7 @@ const auth = async (req, res, next) => {
         const isVerified = jwt.verify(token, 'passwordKey');
         if (!isVerified) return res.status(401).json({msg: 'Token verification failed , authorization failed '});
 
-        //IMPORTNAT STEP
+        //IMPORTANT STEP
         req.user = isVerified.id;
         req.token = token;
         next();

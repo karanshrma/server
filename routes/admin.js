@@ -2,7 +2,7 @@ const express = require('express');
 const adminrouter = express.Router();
 const admin = require('../middleware/admin');
 const {Product} = require("../models/product");
-const {Order} = require("../models/order");
+const Order = require("../models/order");
 
 
 adminrouter.post('/admin/add-product', admin, async (req, res) => {
@@ -47,10 +47,10 @@ adminrouter.get('/admin/get-orders', admin, async (req, res) => {
     }
 })
 
-adminrouter.get('/admin/delete-product', admin, async (req, res) => {
+adminrouter.post('/admin/delete-product', admin, async (req, res) => {
     try {
         const {id} = req.body;
-        let products = await Product.findByIdAndUpdate(id);
+        let products = await Product.findByIdAndDelete(id);
         res.json(products);
 
     } catch (e) {
@@ -59,7 +59,7 @@ adminrouter.get('/admin/delete-product', admin, async (req, res) => {
     }
 })
 
-adminrouter.get('/admin/change-order-status', admin, async (req, res) => {
+adminrouter.post('/admin/change-order-status', admin, async (req, res) => {
     try {
         const {id, status} = req.body;
         let order = await Order.findById(id);
@@ -74,7 +74,7 @@ adminrouter.get('/admin/change-order-status', admin, async (req, res) => {
     }
 })
 
-adminrouter.get('admin/analytics', admin, async (req, res) => {
+adminrouter.get('/admin/analytics', admin, async (req, res) => {
     try {
         const orders = await Order.find({});
         let totalEarnings = 0;
@@ -99,7 +99,9 @@ adminrouter.get('admin/analytics', admin, async (req, res) => {
             booksEarnings,
             fashionEarnings,
         };
+        res.json(earnings);
     } catch (error) {
+        res.status(500).json({error: error.message});
 
     }
 })

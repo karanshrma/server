@@ -54,6 +54,7 @@ userRouter.post('/api/add-to-cart', auth, async (req, res) => {
         console.error('Add to cart error:', error);
         res.status(500).json({ error: error.message });
     }
+    res.json({ message: "Success" });
 });
 
 

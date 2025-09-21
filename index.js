@@ -7,7 +7,7 @@ const adminrouter = require("./routes/admin");
 const productrouter = require("./routes/product");
 const userRouter = require("./routes/user");
 
-const db = "mongodb+srv://karan:Karan%40123@clusteramazon.bgz9jvq.mongodb.net/?retryWrites=true&w=majority&appName=ClusterAmazon";
+const db = "mongodb+srv://karan:KaranSharma1234@amazonflutter.hw84bwg.mongodb.net/amazon-flutter-app?retryWrites=true&w=majority";
 
 const app = express();
 app.use(express.json());

@@ -11,12 +11,11 @@ const orderSchema = mongoose.Schema({
         }
 
     ],
-    totalPrice: {type: Number , required: true},
-    address: {type: String , required: true},
-    userId: {type: String , required: true},
-    orderTime: {type: Number , required: true},
-    status: {type: Number, default: 0 },
-
+    totalPrice: {type: Number, required: true},
+    address: {type: String, required: true},
+    userId: {type: String, required: true},
+    orderTime: {type: Number, required: true},
+    status: {type: Number, default: 0},
 
 
 });
