@@ -12,7 +12,6 @@ const db = "mongodb+srv://karan:KaranSharma1234@amazonflutter.hw84bwg.mongodb.ne
 const app = express();
 app.use(express.json());
 
-// For flutter web
 app.use(cors());
 
 app.use(authRouter);
@@ -22,7 +21,13 @@ app.use(userRouter);
 
 
 
+
 mongoose.connect(db).then(() => {console.log('MongoDB Connected!')}).catch(console.error);
+
+app.get('/host', (req, res) => {
+    res.status(200).type('html').send('<h1>Welcome to backend</h1><p>API is deployed</p>');
+});
+
 
 
 const port = 3000;
