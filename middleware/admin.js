@@ -6,7 +6,7 @@ const admin = async (req, res, next) => {
     try {
         const token = req.header('x-auth-token');
         if (!token) {
-            res.status(401).json({error: 'No token provided , access denied'});
+            res.status(401).json({error: 'Admin : No token provided , access denied'});
         }
         const isVerified = jwt.verify(token, 'passwordKey');
         if (!isVerified) return res.status(401).json({msg: 'Token verification failed , authorization failed '});
